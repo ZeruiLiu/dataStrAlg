@@ -1,0 +1,43 @@
+//Quick sort
+//Time Complexity
+
+function quickSort(arr) {
+  if(arr.length < 2) {return arr;}
+  var middleIndex = Math.floor(arr.length/2);
+  var left = [];
+  var right = [];
+  for(var k=0; k<arr.length; k++){
+    if(arr[k] <= arr[middleIndex]) { left.push(arr[k]);}
+    else if(arr[middleIndex] <arr[k]) { right.push(arr[k]);}
+  }
+  
+  var _left = quickSort(left);
+  var _right = quickSort(right);
+  
+  return _left.concat(_right);
+}
+
+// from online:
+
+function quickSort(a) {
+  if (a.length <= 1) return a;
+
+  var mid = ~~(a.length / 2)
+    , midItem = a.splice(mid, 1)[0]
+    , left = []
+    , right = [];
+
+  a.forEach(function(item) {
+    if (item <= midItem)
+      left.push(item);
+    else 
+      right.push(item);
+  });
+
+  var _left = quickSort(left)
+    , _right = quickSort(right);
+
+  return _left.concat(midItem, _right);
+}
+
+
